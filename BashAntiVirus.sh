@@ -38,7 +38,7 @@ do
 			#echo "file not found"
 			continue
 		fi
-		file_hash=$(sha256sum ${file_name}|awk '{print $1}')
+		file_hash=$(sudo /bin/cat ${file_name} | sha256sum ${file_name}|awk '{print $1}')
     #echo -n $sha " "
 		if grep -q "${file_hash}" ${HASHLIST}; then
         curl_response=$(grep ${file_hash} ${HASHLIST})
